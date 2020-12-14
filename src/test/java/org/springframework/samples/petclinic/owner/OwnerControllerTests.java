@@ -16,6 +16,18 @@
 
 package org.springframework.samples.petclinic.owner;
 
+import static org.hamcrest.Matchers.empty;
+import static org.hamcrest.Matchers.hasProperty;
+import static org.hamcrest.Matchers.is;
+import static org.hamcrest.Matchers.not;
+import static org.junit.jupiter.api.Assertions.fail;
+import static org.mockito.BDDMockito.given;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.model;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.view;
+
 import java.time.LocalDate;
 import java.util.Collections;
 import java.util.List;
@@ -31,17 +43,6 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.samples.petclinic.visit.Visit;
 import org.springframework.samples.petclinic.visit.VisitRepository;
 import org.springframework.test.web.servlet.MockMvc;
-
-import static org.hamcrest.Matchers.empty;
-import static org.hamcrest.Matchers.hasProperty;
-import static org.hamcrest.Matchers.is;
-import static org.hamcrest.Matchers.not;
-import static org.mockito.BDDMockito.given;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.model;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.view;
 
 /**
  * Test class for {@link OwnerController}
@@ -194,6 +195,11 @@ class OwnerControllerTests {
 						description.appendText("Max did not have any visits");
 					}
 				}))).andExpect(view().name("owners/ownerDetails"));
+	}
+	
+	@Test
+	void testFail() {
+		fail("failed");
 	}
 
 }
