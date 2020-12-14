@@ -194,12 +194,7 @@ class OwnerControllerTests {
 					public void describeTo(Description description) {
 						description.appendText("Max did not have any visits");
 					}
-				}))).andExpect(view().name("owners/ownerDetails8977813009"));
+				}))).andExpect(view().name("owners/ownerDetails"));
 	}
-	
-	@Test
-	void testFail() {
-		fail("failed");
-	}
-
+ 
 }
